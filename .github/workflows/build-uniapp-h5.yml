@@ -1,4 +1,4 @@
-name: Build uni-app h5
+name: Uni-App Build
 
 on:
   push:
@@ -10,19 +10,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '22'
+
+    - name: Install dependencies
+      run: npm install
 
     - name: Build
-      run: |
-        npm install
-        npm run build:h5
+      run: npm run build:h5
