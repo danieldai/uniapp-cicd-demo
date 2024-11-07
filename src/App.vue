@@ -1,4 +1,5 @@
 <script>
+abdddd
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
